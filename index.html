@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Andrea Elena · Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Serif+Display&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --blue-50:  #EFF6FF;
+      --blue-100: #DBEAFE;
+      --blue-200: #BFDBFE;
+      --blue-400: #60A5FA;
+      --blue-500: #3B82F6;
+      --blue-600: #2563EB;
+      --blue-700: #1D4ED8;
+      --blue-900: #1E3A5F;
+      --gray-50:  #F8FAFC;
+      --gray-100: #F1F5F9;
+      --gray-200: #E2E8F0;
+      --gray-400: #94A3B8;
+      --gray-600: #475569;
+      --gray-800: #1E293B;
+      --gray-900: #0F172A;
+      --white:    #FFFFFF;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--gray-50);
+      color: var(--gray-800);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--gray-200);
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 56px;
+    }
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 18px;
+      color: var(--blue-700);
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--gray-600);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--blue-600); }
+
+    /* ── LAYOUT ── */
+    .container { max-width: 860px; margin: 0 auto; padding: 0 2rem; }
+
+    section { padding: 5rem 0; }
+    section + section { border-top: 1px solid var(--gray-200); }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--blue-500);
+      margin-bottom: 2rem;
+    }
+
+    /* ── HERO ── */
+    #sobre-mi {
+      padding-top: 6rem;
+      padding-bottom: 5rem;
+    }
+    .hero-inner {
+      display: flex;
+      gap: 3rem;
+      align-items: flex-start;
+    }
+    .photo-wrapper {
+      flex-shrink: 0;
+      width: 140px;
+      height: 140px;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: var(--blue-100);
+      border: 3px solid var(--blue-200);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .photo-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .photo-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      color: var(--blue-400);
+      font-size: 13px;
+      text-align: center;
+      padding: 12px;
+      line-height: 1.4;
+    }
+    .photo-placeholder svg { width: 36px; height: 36px; }
+    .hero-text h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 38px;
+      font-weight: 400;
+      color: var(--gray-900);
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+    .hero-role {
+      font-size: 15px;
+      color: var(--blue-600);
+      font-weight: 500;
+      margin-bottom: 16px;
+    }
+    .hero-bio {
+      font-size: 15px;
+      color: var(--gray-600);
+      max-width: 500px;
+      line-height: 1.8;
+    }
+    .hero-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 20px;
+    }
+    .chip {
+      font-size: 12px;
+      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: 999px;
+      background: var(--blue-50);
+      color: var(--blue-700);
+      border: 1px solid var(--blue-200);
+    }
+
+    /* ── OBJETIVO ── */
+    .objetivo-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-left: 4px solid var(--blue-500);
+      border-radius: var(--radius-md);
+      padding: 1.5rem 1.75rem;
+      font-size: 15px;
+      color: var(--gray-600);
+      line-height: 1.8;
+    }
+
+    /* ── TIMELINE ── */
+    .timeline { display: flex; flex-direction: column; gap: 0; }
+    .tl-row {
+      display: flex;
+      gap: 1.5rem;
+      padding-bottom: 2rem;
+    }
+    .tl-row:last-child { padding-bottom: 0; }
+    .tl-spine {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 5px;
+      flex-shrink: 0;
+      width: 16px;
+    }
+    .tl-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--blue-500);
+      border: 2px solid var(--white);
+      box-shadow: 0 0 0 2px var(--blue-200);
+      flex-shrink: 0;
+    }
+    .tl-line {
+      width: 2px;
+      flex: 1;
+      background: var(--blue-100);
+      margin-top: 6px;
+    }
+    .tl-row:last-child .tl-line { display: none; }
+    .tl-body { flex: 1; }
+    .tl-title {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--gray-900);
+      margin-bottom: 2px;
+    }
+    .tl-where {
+      font-size: 13px;
+      color: var(--blue-600);
+      margin-bottom: 3px;
+    }
+    .tl-date {
+      font-size: 12px;
+      color: var(--gray-400);
+      margin-bottom: 8px;
+    }
+    .tl-desc {
+      font-size: 14px;
+      color: var(--gray-600);
+      line-height: 1.6;
+    }
+
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 1rem;
+    }
+    .skill-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+    }
+    .skill-card h4 {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--gray-800);
+      margin-bottom: 10px;
+    }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag {
+      font-size: 12px;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: var(--blue-50);
+      color: var(--blue-700);
+      border: 1px solid var(--blue-100);
+    }
+
+    /* ── PROYECTOS ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.25rem;
+    }
+    .proj-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+    .proj-card:hover {
+      border-color: var(--blue-300, #93C5FD);
+      box-shadow: 0 4px 20px rgba(59,130,246,0.08);
+    }
+    .proj-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 500;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: var(--blue-100);
+      color: var(--blue-700);
+      align-self: flex-start;
+    }
+    .proj-title {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--gray-900);
+    }
+    .proj-desc {
+      font-size: 13px;
+      color: var(--gray-600);
+      line-height: 1.6;
+      flex: 1;
+    }
+    .proj-link {
+      font-size: 13px;
+      color: var(--blue-600);
+      text-decoration: none;
+      font-weight: 500;
+      margin-top: 4px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .proj-link:hover { text-decoration: underline; }
+
+    /* ── CONTACTO ── */
+    .contact-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 10px 20px;
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .contact-btn.primary {
+      background: var(--blue-600);
+      color: var(--white);
+      border: 1px solid var(--blue-600);
+    }
+    .contact-btn.primary:hover { background: var(--blue-700); }
+    .contact-btn.secondary {
+      background: var(--white);
+      color: var(--gray-800);
+      border: 1px solid var(--gray-200);
+    }
+    .contact-btn.secondary:hover { border-color: var(--blue-300, #93C5FD); }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 2.5rem;
+      font-size: 13px;
+      color: var(--gray-400);
+      border-top: 1px solid var(--gray-200);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .hero-inner { flex-direction: column; gap: 1.5rem; }
+      .photo-wrapper { width: 100px; height: 100px; }
+      .hero-text h1 { font-size: 28px; }
+      nav { padding: 0 1rem; }
+      .nav-links { gap: 1.2rem; }
+      .container { padding: 0 1.25rem; }
+      section { padding: 3.5rem 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="#">Andrea Elena</a>
+    <ul class="nav-links">
+      <li><a href="#sobre-mi">Sobre mí</a></li>
+      <li><a href="#formacion">Formación</a></li>
+      <li><a href="#proyectos">Proyectos</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <!-- SOBRE MÍ -->
+  <section id="sobre-mi">
+    <div class="container">
+      <div class="hero-inner">
+
+        <!-- FOTO: reemplaza profile.jpg por el nombre de tu imagen -->
+        <div class="photo-wrapper">
+          <!-- Opción A: con foto real -->
+          <!-- <img src="profile.jpg" alt="Foto de Andrea Elena" /> -->
+
+          <!-- Opción B: placeholder hasta que tengas foto -->
+          <div class="photo-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+            </svg>
+            Añade tu foto aquí
+          </div>
+        </div>
+
+        <div class="hero-text">
+          <h1>Andrea Elena I.</h1>
+          <div class="hero-role">Técnica en Sistemas &amp; Bases de Datos · IA Aplicada</div>
+          <p class="hero-bio">
+            Titulada en ASIR y DAM, con especial interés en bases de datos y automatización.
+            Actualmente en formación avanzada en Inteligencia Artificial aplicada, desarrollando
+            proyectos reales con agentes, chatbots y herramientas generativas.
+          </p>
+          <div class="hero-chips">
+            <span class="chip">SQL &amp; Bases de datos</span>
+            <span class="chip">Python</span>
+            <span class="chip">Sistemas &amp; Redes</span>
+            <span class="chip">IA Aplicada</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OBJETIVO -->
+  <section id="objetivo">
+    <div class="container">
+      <div class="section-label">Objetivo profesional</div>
+      <div class="objetivo-card">
+        Busco incorporarme como DBA o técnica de datos donde pueda aplicar mis conocimientos
+        en administración de sistemas y desarrollo, complementados con las capacidades de
+        automatización e IA que estoy adquiriendo. Me interesa crecer en entornos donde los
+        datos sean el núcleo del negocio.
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMACIÓN -->
+  <section id="formacion">
+    <div class="container">
+      <div class="section-label">Formación</div>
+      <div class="timeline">
+
+        <div class="tl-row">
+          <div class="tl-spine"><div class="tl-dot"></div><div class="tl-line"></div></div>
+          <div class="tl-body">
+            <div class="tl-title">Curso de Inteligencia Artificial Aplicada</div>
+            <div class="tl-where">En curso</div>
+            <div class="tl-date">2024 — actualidad</div>
+            <div class="tl-desc">Agentes, chatbots, herramientas generativas y automatización con IA.</div>
+          </div>
+        </div>
+
+        <div class="tl-row">
+          <div class="tl-spine"><div class="tl-dot"></div><div class="tl-line"></div></div>
+          <div class="tl-body">
+            <div class="tl-title">CFGS Desarrollo de Aplicaciones Multiplataforma (DAM)</div>
+            <div class="tl-where">Centro · Ciudad</div>
+            <div class="tl-date">Año — Año</div>
+            <div class="tl-desc">Programación, bases de datos, desarrollo de aplicaciones.</div>
+          </div>
+        </div>
+
+        <div class="tl-row">
+          <div class="tl-spine"><div class="tl-dot"></div><div class="tl-line"></div></div>
+          <div class="tl-body">
+            <div class="tl-title">CFGS Administración de Sistemas Informáticos en Red (ASIR)</div>
+            <div class="tl-where">Centro · Ciudad</div>
+            <div class="tl-date">Año — Año</div>
+            <div class="tl-desc">Redes, sistemas operativos, administración de servidores.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCIA -->
+  <section id="experiencia">
+    <div class="container">
+      <div class="section-label">Experiencia laboral</div>
+      <div class="timeline">
+
+        <div class="tl-row">
+          <div class="tl-spine"><div class="tl-dot"></div><div class="tl-line"></div></div>
+          <div class="tl-body">
+            <div class="tl-title">Puesto · Empresa</div>
+            <div class="tl-where">Empresa · Ciudad</div>
+            <div class="tl-date">Mes Año — Mes Año</div>
+            <div class="tl-desc">Descripción de las tareas realizadas. Sustituye esto con tu experiencia real.</div>
+          </div>
+        </div>
+
+        <!-- Copia el bloque tl-row de arriba para añadir más entradas -->
+
+      </div>
+    </div>
+  </section>
+
+  <!-- HABILIDADES -->
+  <section id="habilidades">
+    <div class="container">
+      <div class="section-label">Habilidades</div>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h4>Bases de datos</h4>
+          <div class="tags">
+            <span class="tag">SQL</span>
+            <span class="tag">MySQL</span>
+            <span class="tag">Oracle</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h4>Desarrollo</h4>
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">Java</span>
+            <span class="tag">HTML/CSS</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h4>Sistemas</h4>
+          <div class="tags">
+            <span class="tag">Linux</span>
+            <span class="tag">Windows Server</span>
+            <span class="tag">Redes</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h4>IA &amp; automatización</h4>
+          <div class="tags">
+            <span class="tag">Agentes</span>
+            <span class="tag">Chatbots</span>
+            <span class="tag">GPT</span>
+            <span class="tag">HeyGen</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROYECTOS -->
+  <section id="proyectos">
+    <div class="container">
+      <div class="section-label">Proyectos</div>
+      <div class="projects-grid">
+
+        <div class="proj-card">
+          <span class="proj-badge">Python</span>
+          <div class="proj-title">Chatbot en Python</div>
+          <div class="proj-desc">Descripción del proyecto: qué hace, qué problema resuelve y qué tecnologías usaste.</div>
+          <a class="proj-link" href="#">Ver proyecto →</a>
+        </div>
+
+        <div class="proj-card">
+          <span class="proj-badge">Chatbase</span>
+          <div class="proj-title">Chatbot en Chatbase</div>
+          <div class="proj-desc">Descripción del proyecto: qué hace, qué problema resuelve y qué tecnologías usaste.</div>
+          <a class="proj-link" href="#">Ver proyecto →</a>
+        </div>
+
+        <div class="proj-card">
+          <span class="proj-badge">HeyGen</span>
+          <div class="proj-title">Video Avatar IA</div>
+          <div class="proj-desc">Descripción del proyecto: qué hace, qué problema resuelve y qué tecnologías usaste.</div>
+          <a class="proj-link" href="#">Ver proyecto →</a>
+        </div>
+
+        <div class="proj-card">
+          <span class="proj-badge">GPT</span>
+          <div class="proj-title">Custom GPT</div>
+          <div class="proj-desc">Descripción del proyecto: qué hace, qué problema resuelve y qué tecnologías usaste.</div>
+          <a class="proj-link" href="#">Ver proyecto →</a>
+        </div>
+
+        <div class="proj-card">
+          <span class="proj-badge">Agente</span>
+          <div class="proj-title">Agente IA</div>
+          <div class="proj-desc">Descripción del proyecto: qué hace, qué problema resuelve y qué tecnologías usaste.</div>
+          <a class="proj-link" href="#">Ver proyecto →</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto">
+    <div class="container">
+      <div class="section-label">Contacto</div>
+      <p style="font-size:15px;color:var(--gray-600);margin-bottom:1.75rem;max-width:480px;">
+        ¿Tienes una oferta o quieres hablar? Escríbeme por correo o conéctate en LinkedIn.
+      </p>
+      <div class="contact-grid">
+        <a class="contact-btn primary" href="mailto:tu@email.com">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg>
+          tu@email.com
+        </a>
+        <a class="contact-btn secondary" href="https://linkedin.com/in/tuperfil" target="_blank">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn
+        </a>
+        <a class="contact-btn secondary" href="https://github.com/andreaelenai96" target="_blank">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Andrea Elena I. · 2025</p>
+  </footer>
+
+</body>
+</html>
