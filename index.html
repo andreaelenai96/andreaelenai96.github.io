@@ -700,16 +700,15 @@
           <span class="proj-badge">HeyGen</span>
 
   <!-- Contenedor del video -->
-  <div class="video-container">
+  <div class="video-container" style="margin: 15px 0; border-radius: 8px; overflow: hidden; background: #000;">
     <video 
-      src="VideoAvatarBienvenidaAlEquipo.mp4" 
-      muted 
-      loop 
-      onmouseover="this.play()" 
-      onmouseout="this.pause(); this.currentTime=0;"
-      playsinline>
+      src="VideoAvatarBienvenidaAlEquipo.mp4"
+
+      controls 
+      playsinline
+      style="width: 100%; display: block; cursor: pointer;">
+      Tu navegador no soporta el video.
     </video>
-    <div class="video-overlay">Click para ampliar</div>
   </div>
           <span class="proj-badge">Prompt Engineerging, HeyGen</span>
           <div class="proj-title">Video Avatar OnBoarding</div>
