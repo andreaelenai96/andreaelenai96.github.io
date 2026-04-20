@@ -666,9 +666,12 @@
           <span class="proj-badge">Chatbase, Prompt Engineering</span>
           <div class="proj-title">Chatbot en Chatbase</div>
           <div class="proj-desc">Un agente soporte de pedidos para responder dudas frecuentes a clientes sobre pedidos, entregas y devoluciones. Pruebalo aquí, abajo a la derecha!</div>
-          <script>
-  // Configuración para ocultar el mensaje de bienvenida
+          <!-- Enlace configurado para abrir solo el chatbot -->
+<a class="proj-link" id="open-chatbot" href="javascript:void(0)">Ver proyecto →</a>
+
+<script>
   window.chatbaseConfig = {
+    // Esto oculta el globo de texto flotante "Hola!..."
     showChatBubbleMessage: false,
   };
 
@@ -687,12 +690,24 @@
       script.src="https://www.chatbase.co/embed.min.js";
       script.id="u1Tec5dn0sU89aEkZbfzv";
       script.domain="www.chatbase.co";
-      document.body.appendChild(script)
+      document.body.appendChild(script);
+
+      // --- CÓDIGO PARA ABRIR AL HACER CLIC ---
+      script.onload = () => {
+        const link = document.getElementById('open-chatbot');
+        link.addEventListener('click', (e) => {
+          // Evita que la página haga scroll hacia arriba
+          e.preventDefault(); 
+          // Abre el chatbot de Chatbase
+          window.chatbase("open");
+        });
+      };
     };
     if(document.readyState==="complete"){onLoad()}
     else{window.addEventListener("load",onLoad)}
   })();
 </script>
+
 
         </div>
 
