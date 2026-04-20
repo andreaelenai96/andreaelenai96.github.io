@@ -419,6 +419,37 @@
         display: flex;
       }
     }
+/* para el vídeo avatar */
+    .video-container {
+    margin: 15px 0;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    background: #000;
+    line-height: 0;
+  }
+
+  .video-container video {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Efecto al pasar el ratón: se hace un poco más grande */
+  .video-container:hover {
+    transform: scale(1.05);
+    z-index: 5;
+  }
+
+  /* Si quieres que se abra "en grande" de verdad (Lightbox), 
+     lo más sencillo sin librerías es usar el atributo 'controls' 
+     para que el usuario use el botón de pantalla completa nativo */
+  .video-container:active video, .video-container video:focus {
+    outline: none;
+  }
+</style>
   </style>
 </head>
 <body>
@@ -669,21 +700,21 @@
           <span class="proj-badge">HeyGen</span>
 
   <!-- Contenedor del video -->
-  <div class="proj-video" style="margin: 15px 0; border-radius: 8px; overflow: hidden; background: #000;">
+  <div class="video-container">
     <video 
-      src="VideoAvatarBienvenidaAlEquipo.mp4" 
-      controls 
-      width="100%" 
-      poster="imagen-de-portada.jpg"
-      style="display: block; width: 100%; height: auto;">
-      Tu navegador no soporta el video.
+      src="tu-video.mp4" 
+      muted 
+      loop 
+      onmouseover="this.play()" 
+      onmouseout="this.pause(); this.currentTime=0;"
+      playsinline>
     </video>
+    <div class="video-overlay">Click para ampliar</div>
   </div>
-          <span class="proj-badge">HeyGen</span>
-          <div class="proj-title">Video Avatar IA</div>
-          <div class="proj-desc">Descripción del proyecto: qué hace, qué problema resuelve y qué tecnologías usaste.</div>
-          <a class="proj-link" href="#">Ver proyecto →</a>
-        </div>
+          <span class="proj-badge">Prompt Engineerging, HeyGen</span>
+          <div class="proj-title">Video Avatar OnBoarding</div>
+          <div class="proj-desc">Un vídeo avatar de bienvenida a los nuevos empleados hecho con HeyGen.</div>
+  </div>
 
         <div class="proj-card">
           <span class="proj-badge">Prompt Engineerging, Claude.</span>
