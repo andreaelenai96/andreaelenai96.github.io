@@ -359,6 +359,66 @@
       .container { padding: 0 1.25rem; }
       section { padding: 3.5rem 0; }
     }
+
+     /* --- ESTILOS DEL MENÚ --- */
+    .navbar { 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center;
+      padding: 1rem; 
+      background: #fff;
+      font-family: sans-serif;
+    }
+    
+    .nav-links { 
+      display: flex; 
+      list-style: none; 
+      gap: 20px; 
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #333;
+    }
+
+    .menu-toggle { display: none; } 
+    .hamburger { display: none; cursor: pointer; }
+
+    /* Responsive: Móvil (menos de 768px) */
+    @media (max-width: 768px) {
+      .hamburger {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        z-index: 10;
+      }
+      
+      .hamburger span {
+        width: 25px;
+        height: 3px;
+        background: #333; 
+      }
+
+      .nav-links {
+        display: none; 
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: white;
+        text-align: center;
+        padding: 20px 0;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      }
+
+      /* Muestra el menú al hacer clic */
+      .menu-toggle:checked ~ .nav-links {
+        display: flex;
+      }
+    }
   </style>
 </head>
 <body>
@@ -544,9 +604,7 @@
           <h4>Desarrollo</h4>
           <div class="tags">
             <span class="tag">Java</span>
-            <span class="tag">Bash scripting</span>
             <span class="tag">HTML/CSS/JavaScript</span>
-            <span class="tag">Python</span>
           </div>
         </div>
         <div class="skill-card">
@@ -576,13 +634,51 @@
         <div class="proj-card">
           <span class="proj-badge">Chatbase, Prompt Engineering</span>
           <div class="proj-title">Chatbot en Chatbase</div>
-          <div class="proj-desc">Un agente soporte de pedidos para responder dudas frecuentes a clientes sobre pedidos, entregas y devoluciones.</div>
+          <div class="proj-desc">Un agente soporte de pedidos para responder dudas frecuentes a clientes sobre pedidos, entregas y devoluciones. Pruebalo aquí, abajo a la derecha!</div>
           <script>
-              (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="u1Tec5dn0sU89aEkZbfzv";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
-          </script>
+  // Configuración para ocultar el mensaje de bienvenida
+  window.chatbaseConfig = {
+    showChatBubbleMessage: false,
+  };
+
+  (function(){
+    if(!window.chatbase||window.chatbase("getState")!=="initialized"){
+      window.chatbase=(...arguments)=>{
+        if(!window.chatbase.q){window.chatbase.q=[]}
+        window.chatbase.q.push(arguments)
+      };
+      window.chatbase=new Proxy(window.chatbase,{
+        get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}
+      })
+    }
+    const onLoad=function(){
+      const script=document.createElement("script");
+      script.src="https://www.chatbase.co/embed.min.js";
+      script.id="u1Tec5dn0sU89aEkZbfzv";
+      script.domain="www.chatbase.co";
+      document.body.appendChild(script)
+    };
+    if(document.readyState==="complete"){onLoad()}
+    else{window.addEventListener("load",onLoad)}
+  })();
+</script>
+
         </div>
 
         <div class="proj-card">
+          <span class="proj-badge">HeyGen</span>
+
+  <!-- Contenedor del video -->
+  <div class="proj-video" style="margin: 15px 0; border-radius: 8px; overflow: hidden; background: #000;">
+    <video 
+      src="VideoAvatarBienvenidaAlEquipo.mp4" 
+      controls 
+      width="100%" 
+      poster="imagen-de-portada.jpg"
+      style="display: block; width: 100%; height: auto;">
+      Tu navegador no soporta el video.
+    </video>
+  </div>
           <span class="proj-badge">HeyGen</span>
           <div class="proj-title">Video Avatar IA</div>
           <div class="proj-desc">Descripción del proyecto: qué hace, qué problema resuelve y qué tecnologías usaste.</div>
