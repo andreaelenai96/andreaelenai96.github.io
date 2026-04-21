@@ -672,11 +672,6 @@
 <a class="proj-link" id="open-chatbot" href="javascript:void(0)">Ver proyecto →</a>
 
 <script>
-  window.chatbaseConfig = {
-    // Esto oculta el globo de texto flotante "Hola!..."
-    showChatBubbleMessage: false,
-  };
-
   (function(){
     if(!window.chatbase||window.chatbase("getState")!=="initialized"){
       window.chatbase=(...arguments)=>{
@@ -687,26 +682,32 @@
         get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}
       })
     }
-    const onLoad=function(){
-      const script=document.createElement("script");
-      script.src="https://www.chatbase.co/embed.min.js";
-      script.id="u1Tec5dn0sU89aEkZbfzv";
-      script.domain="www.chatbase.co";
+
+    const onLoad = function(){
+      // Configuración forzada para ocultar la burbuja de mensaje
+      window.chatbase("setConfig", {
+        showChatBubbleMessage: false,
+      });
+
+      const script = document.createElement("script");
+      script.src = "https://www.chatbase.co/embed.min.js";
+      script.id = "u1Tec5dn0sU89aEkZbfzv";
+      script.domain = "www.chatbase.co";
       document.body.appendChild(script);
 
-      // --- CÓDIGO PARA ABRIR AL HACER CLIC ---
       script.onload = () => {
         const link = document.getElementById('open-chatbot');
-        link.addEventListener('click', (e) => {
-          // Evita que la página haga scroll hacia arriba
-          e.preventDefault(); 
-          // Abre el chatbot de Chatbase
-          window.chatbase("open");
-        });
+        if (link) {
+          link.addEventListener('click', (e) => {
+            e.preventDefault(); 
+            window.chatbase("open");
+          });
+        }
       };
     };
-    if(document.readyState==="complete"){onLoad()}
-    else{window.addEventListener("load",onLoad)}
+
+    if(document.readyState === "complete"){ onLoad() }
+    else { window.addEventListener("load", onLoad) }
   })();
 </script>
 
