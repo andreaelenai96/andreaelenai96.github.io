@@ -381,20 +381,21 @@
         <style>
 
           .photo-placeholder {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden; /* Corta lo que sobresalga si el contenedor es circular */
-  border-radius: 50%; /* Si quieres que sea redonda, si no, quítalo */
+    width: 200px; /* O el tamaño que tenga tu cuadrado azul */
+    height: 200px;
+    border-radius: 20px; /* Para que coincida con las esquinas redondeadas de tu diseño */
+    overflow: hidden;    /* Importante: recorta la foto para que no se salga de las esquinas */
+    display: flex;
+    padding: 0;          /* Elimina cualquier espacio interno (padding) que pueda haber */
+    border: 2px solid rgba(255,255,255,0.2); /* Opcional: un borde sutil para que resalte */
 }
 
 .profile-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Esto es clave: mantiene la proporción sin estirar */
-  display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;   /* Esto hace que la foto llene todo el cuadrado */
+    object-position: center; /* Centra la cara en caso de que la foto se recorte un poco */
+    display: block;
 }
 
         </style>
