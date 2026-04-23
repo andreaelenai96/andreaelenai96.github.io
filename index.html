@@ -381,22 +381,30 @@
         <style>
 
           .photo-placeholder {
-    width: 200px; /* O el tamaño que tenga tu cuadrado azul */
-    height: 200px;
-    border-radius: 20px; /* Para que coincida con las esquinas redondeadas de tu diseño */
-    overflow: hidden;    /* Importante: recorta la foto para que no se salga de las esquinas */
+    width: 180px;  /* Ajusta el tamaño que quieras para móvil */
+    height: 180px;
+    margin: 0 auto; /* Centra el cuadro en el móvil */
+    padding: 0 !important; /* ELIMINA el espacio interno que causa el borde blanco */
+    overflow: hidden;
+    border-radius: 30px; /* Redondeado suave como en tu imagen */
     display: flex;
-    padding: 0;          /* Elimina cualquier espacio interno (padding) que pueda haber */
-    border: 2px solid rgba(255,255,255,0.2); /* Opcional: un borde sutil para que resalte */
+    border: 3px solid rgba(255, 255, 255, 0.3); /* El borde exterior fino */
+    background: transparent; /* Quita cualquier fondo gris que pueda quedar */
 }
 
 .profile-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;   /* Esto hace que la foto llene todo el cuadrado */
-    object-position: center; /* Centra la cara en caso de que la foto se recorte un poco */
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover; /* Llena el espacio sin deformar */
     display: block;
 }
+
+/* Ajuste opcional para pantallas más grandes (PC) */
+@media (min-width: 768px) {
+    .photo-placeholder {
+        width: 220px;
+        height: 220px;
+    }
 
         </style>
         
