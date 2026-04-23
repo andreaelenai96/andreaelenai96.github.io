@@ -374,13 +374,30 @@
       <div class="hero-inner">
         <div class="photo-wrapper fade-in">
           <div class="photo-placeholder">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
-            </svg>
-            Añade tu foto
+            <img src="foto_CV.png" alt="Tu Nombre" class="profile-img">
           </div>
         </div>
 
+        <style>
+
+          .photo-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* Corta lo que sobresalga si el contenedor es circular */
+  border-radius: 50%; /* Si quieres que sea redonda, si no, quítalo */
+}
+
+.profile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Esto es clave: mantiene la proporción sin estirar */
+  display: block;
+}
+
+        </style>
         
         <div class="hero-text">
           <div class="hero-eyebrow fade-in fade-in-delay-1">Portfolio · 2026</div>
