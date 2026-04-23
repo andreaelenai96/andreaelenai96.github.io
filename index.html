@@ -381,27 +381,22 @@
         <style>
 
          .photo-placeholder {
-    width: 180px; 
+    width: 180px;  /* Ajusta el tamaño que quieras para móvil */
     height: 180px;
-    margin: 0 auto;
+    margin: 0 auto; /* Centra el cuadro en el móvil */
+    padding: 0 !important; /* ELIMINA el espacio interno que causa el borde blanco */
     overflow: hidden;
-    border-radius: 30px;
+    border-radius: 30px; /* Redondeado suave como en tu imagen */
     display: flex;
-    align-items: center;
-    justify-content: center;
-    /* Ajusta este padding para "alejar" la foto. 
-       Más px = cara más pequeña y más fondo visible */
-    padding: 15px !important; 
-    background: rgba(255, 255, 255, 0.1); /* Un fondo sutil para el espacio extra */
-    border: 2px solid rgba(255, 255, 255, 0.3);
+    border: 3px solid rgba(255, 255, 255, 0.3); /* El borde exterior fino */
+    background: transparent; /* Quita cualquier fondo gris que pueda quedar */
 }
 
 .profile-img {
-    width: 100%;
-    height: 100%;
-    /* Cambiamos 'cover' por 'contain' para que la foto se vea entera */
-    object-fit: contain; 
-    border-radius: 15px; /* Un radio menor para la foto interna */
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover; /* Llena el espacio sin deformar */
+    display: block;
 }
 
 /* Ajuste opcional para pantallas más grandes (PC) */
