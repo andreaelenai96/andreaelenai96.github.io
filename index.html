@@ -381,31 +381,31 @@
         <style>
 
          .photo-placeholder {
-    width: 180px;  /* Ajusta el tamaño que quieras para móvil */
-    height: 180px;
-    margin: 0 auto; /* Centra el cuadro en el móvil */
-    padding: 0 !important; /* ELIMINA el espacio interno que causa el borde blanco */
+    width: 220px;         /* Tamaño fijo para que no varíe entre dispositivos */
+    height: 220px;
+    margin: 0 auto;       /* Centrado */
     overflow: hidden;
-    border-radius: 30px; /* Redondeado suave como en tu imagen */
+    border-radius: 25px;  /* Esquinas suaves */
     display: flex;
-    border: 3px solid rgba(255, 255, 255, 0.3); /* El borde exterior fino */
-    background: transparent; /* Quita cualquier fondo gris que pueda quedar */
+    padding: 0;           /* Quitamos padding para que la foto llegue al borde del marco */
+    border: 4px solid rgba(255, 255, 255, 0.2); /* El marco azul/blanco que rodea la foto */
+    background: #f0f0f0;  /* Un color de fondo por si la foto tarda en cargar */
 }
 
 .profile-img {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover; /* Llena el espacio sin deformar */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;    /* Llena el cuadrado usando tu propio fondo de la foto */
+    object-position: center top; /* Centra la cara pero prioriza la parte superior */
     display: block;
 }
 
-/* Ajuste opcional para pantallas más grandes (PC) */
-@media (min-width: 768px) {
+/* Ajuste pequeño para móviles muy estrechos */
+@media (max-width: 400px) {
     .photo-placeholder {
-        width: 220px;
-        height: 220px;
+        width: 180px;
+        height: 180px;
     }
-
         </style>
         
         <div class="hero-text">
