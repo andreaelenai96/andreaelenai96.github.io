@@ -380,21 +380,19 @@
 
         <style>
       .photo-placeholder.photo-loaded {
-  padding: 0;
+ padding: 0;
   overflow: hidden;
-  width: 420px;        /* más grande */
-  height: 420px;       /* más grande */
+  width: 340px;
+  height: 340px;
   border-radius: 20px;
 }
 
 .profile-photo {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center 20%;   /* sube la imagen, muestra más cuerpo */
+  object-fit: contain;        /* ← esto es el cambio clave */
+  object-position: center center;
   display: block;
-  transform: scale(0.70);        /* aleja un poco el zoom */
-  transform-origin: center 30%;
 }
       
       </style>
